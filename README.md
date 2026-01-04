@@ -1,5 +1,6 @@
 # Text case converter
 This is just a simple program for converting text case. I created it because I found nothing similar.
+![Linux look](assets/screenshot.png)
 
 ## Installation
 1. Make sure you have JDK 21 (or higher) installed.
