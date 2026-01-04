@@ -1,10 +1,21 @@
 plugins {
     id("java")
     id("application")
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 application {
-    mainClass.set("org.pustoslov.TextCaseConverter")}
+    mainClass.set("org.pustoslov.TextCaseConverter")
+}
+
+spotless {
+    java {
+        target("src/**/*.java")
+        removeUnusedImports()
+        googleJavaFormat()
+        importOrder()
+    }
+}
 
 group = "org.pustoslov"
 version = "1.1.0"

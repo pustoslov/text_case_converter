@@ -1,11 +1,11 @@
 package org.pustoslov;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.util.ResourceBundle;
+import javax.swing.*;
 
 public class TextCaseConverter extends JFrame {
   private final JTextArea textField;
@@ -40,8 +40,7 @@ public class TextCaseConverter extends JFrame {
     add(scrollPane, BorderLayout.CENTER);
     add(buttonPanel, BorderLayout.SOUTH);
 
-    ((JComponent) getContentPane())
-            .setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+    ((JComponent) getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
     toUpperCaseButton.addActionListener(e -> convertToUpperCase());
     toLowerCaseButton.addActionListener(e -> convertToLowerCase());
@@ -66,7 +65,6 @@ public class TextCaseConverter extends JFrame {
       showToast(resourceBundle.getString("toast.emptyWindow"), false, 1000);
     }
   }
-
 
   private void copyToClipboard() {
     String text = textField.getText();
@@ -110,8 +108,9 @@ public class TextCaseConverter extends JFrame {
     toast.pack();
 
     Point location = getLocation();
-    toast.setLocation(location.x + getWidth() / 2 - toast.getWidth() / 2,
-            location.y + getHeight() / 2 - toast.getHeight() / 2);
+    toast.setLocation(
+        location.x + getWidth() / 2 - toast.getWidth() / 2,
+        location.y + getHeight() / 2 - toast.getHeight() / 2);
 
     toast.setVisible(true);
 
@@ -119,16 +118,16 @@ public class TextCaseConverter extends JFrame {
   }
 
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(() -> {
+    SwingUtilities.invokeLater(
+        () -> {
+          try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
 
-      try {
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception e) {
-        System.out.println(e.getMessage());
-      }
-
-      TextCaseConverter converter = new TextCaseConverter();
-      converter.setVisible(true);
-    });
+          TextCaseConverter converter = new TextCaseConverter();
+          converter.setVisible(true);
+        });
   }
 }
